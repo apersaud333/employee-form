@@ -18,7 +18,13 @@ class EmployeeForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Submitted Employee:', this.state);
+    const newEmployee = {
+      name: this.state.name,
+      email: this.state.email,
+      title: this.state.title,
+      department: this.state.department,
+    };
+    this.props.onAddEmployee(newEmployee);
     this.setState({ name: '', email: '', title: '', department: '' });
   };
 
@@ -33,7 +39,6 @@ class EmployeeForm extends React.Component {
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
-          required
         />
 
         <label>Email:</label>
@@ -42,7 +47,6 @@ class EmployeeForm extends React.Component {
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
-          required
         />
 
         <label>Job Title:</label>
@@ -51,7 +55,6 @@ class EmployeeForm extends React.Component {
           name="title"
           value={this.state.title}
           onChange={this.handleChange}
-          required
         />
 
         <label>Department:</label>
@@ -60,7 +63,6 @@ class EmployeeForm extends React.Component {
           name="department"
           value={this.state.department}
           onChange={this.handleChange}
-          required
         />
 
         <button type="submit">Submit</button>
@@ -70,4 +72,5 @@ class EmployeeForm extends React.Component {
 }
 
 export default EmployeeForm;
+
 
